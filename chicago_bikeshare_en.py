@@ -5,6 +5,8 @@
 import csv
 import matplotlib.pyplot as plt
 
+from useful_functions import sum_of_values
+
 # Let's read the data as a list
 print("Reading the document...")
 with open("chicago.csv", "r") as file_read:
@@ -79,8 +81,8 @@ input("Press Enter to continue...")
 # Now we know how to access the features, let's count how many Males and Females the dataset have
 # TASK 4
 # TODO: Count each gender. You should not use a function to do that.
-male = sum(1 for k in column_to_list(data_list, -2) if k.lower() == "male")
-female = sum(1 for k in column_to_list(data_list, -2) if k.lower() == "female")
+male = sum_of_values(1 for k in column_to_list(data_list, -2) if k.lower() == "male")
+female = sum_of_values(1 for k in column_to_list(data_list, -2) if k.lower() == "female")
 
 
 # Checking the result
@@ -104,8 +106,8 @@ def count_gender(data_list):
         A 2-list in the format [male, female] where male is number o ocurrences
         of male gender and female is the number of ocurrences of female gender.
     """
-    male = sum(1 for k in column_to_list(data_list, -2) if k.lower() == "male")
-    female = sum(1 for k in column_to_list(data_list, -2) if k.lower() == "female")
+    male = sum_of_values(1 for k in column_to_list(data_list, -2) if k.lower() == "male")
+    female = sum_of_values(1 for k in column_to_list(data_list, -2) if k.lower() == "female")
     return [male, female]
 
 
@@ -157,7 +159,7 @@ input("Press Enter to continue...")
 # TASK 7
 # TODO: Plot a similar graph for user_types. Make sure the legend is correct.
 print("\nTASK 7: Check the chart!")
-get_sum = lambda data, col_index, value: sum(
+get_sum = lambda data, col_index, value: sum_of_values(
     1 for k in column_to_list(data, col_index) if k.lower() == value.lower()
 )
 def count_user_types(data_list):
@@ -202,15 +204,7 @@ input("Press Enter to continue...")
 # TASK 9
 # TODO: Find the Minimum, Maximum, Mean and Median trip duration.
 # You should not use ready functions to do that, like max() or min().
-def sum_of_values(values):
-    """Get a sequence of values and returns the sum of this values
-    Equivalent to built-in function sum.
-    """
-    _sum = 0
-    for value in values:
-        _sum += value
 
-    return _sum
 
 def get_median(values):
     """Get a sequence of values and returns the median of this values"""
