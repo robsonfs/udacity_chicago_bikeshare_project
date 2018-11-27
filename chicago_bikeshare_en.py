@@ -126,7 +126,14 @@ input("Press Enter to continue...")
 # TODO: Create a function to get the most popular gender and print the gender as string.
 # We expect to see "Male", "Female" or "Equal" as answer.
 def most_popular_gender(data_list):
-    """From a sequence of gender values, calculate the most popular gender."""
+    """From a sequence of gender values, calculate the most popular gender.
+    Args:
+        data_list: A sequence of genders
+    Returns:
+        - Equal, if the number of males and females are equal
+        - Male, if the number of males is greater than the number of females
+        - Female, if the number of females is greater than the number of males
+    """
     male, female = count_gender(data_list)
     results = (('Male', male), ('Female', female))
     answer = "Equal" if male == female else sorted(
