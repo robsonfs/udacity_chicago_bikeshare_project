@@ -200,7 +200,7 @@ input("Press Enter to continue...")
 male, female = count_gender(data_list)
 print("\nTASK 8: Why the following condition is False?")
 print("male + female == len(data_list):", male + female == len(data_list))
-answer = "Some rows has no value for the column 'Ghender'"
+answer = "Some rows has no value for the column 'Gender'"
 print("Answer:", answer)
 
 # ------------ DO NOT CHANGE ANY CODE HERE ------------
