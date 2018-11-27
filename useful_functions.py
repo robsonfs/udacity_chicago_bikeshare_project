@@ -15,3 +15,17 @@ def sum_of_values(*values):
         except TypeError:
             _sum += sum_of_values(*(k for k in value))
     return _sum
+
+
+def get_median(values):
+    """Get a sequence of values and returns the median of this values
+    Args:
+        - values: a list of numeric values
+    Returns:
+        - The median of provided values.
+    """
+    size = len(values)
+    midle = size // 2
+    if size % 2:
+        return values[midle]
+    return (values[midle] + values[midle - 1]) / 2

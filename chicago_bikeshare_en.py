@@ -5,7 +5,7 @@
 import csv
 import matplotlib.pyplot as plt
 
-from useful_functions import sum_of_values
+from useful_functions import sum_of_values, get_median
 
 # Let's read the data as a list
 print("Reading the document...")
@@ -166,13 +166,29 @@ input("Press Enter to continue...")
 # TASK 7
 # TODO: Plot a similar graph for user_types. Make sure the legend is correct.
 print("\nTASK 7: Check the chart!")
-get_sum = lambda data, col_index, value: sum_of_values(
-    1 for k in column_to_list(data, col_index) if k.lower() == value.lower()
-)
+
+def get_sum(data, col_index, value):
+    """Calculate the sum of specific value into a sequence of values
+    Args:
+        - data: A sequence of values
+        - col_index: The index of the column of interest
+        - The value type you want to count.
+    Returns:
+        - An integer equivalent to the number of occurrences of <value> into
+        <data[col_index]>
+    """
+    count = 0
+    items = column_to_list(data, col_index)
+    for item in items:
+        if item.lower() == value.lower():
+            count += 1
+    return count
+
+
 def count_user_types(data_list):
     """Count ocorrences of each user_type
     Args:
-        data: Sequence with all user_type values.
+        data_list: Sequence with all user_type values.
     Results:
         A 3-list in the format [customer, subscriber, dependent] where customer
         is number o occurrences of customer gender and subscriber is the number
@@ -214,15 +230,6 @@ input("Press Enter to continue...")
 # TODO: Find the Minimum, Maximum, Mean and Median trip duration.
 # You should not use ready functions to do that, like max() or min().
 
-
-def get_median(values):
-    """Get a sequence of values and returns the median of this values"""
-    size = len(values)
-    midle = size // 2
-    if size % 2:
-        return values[midle]
-
-    return (values[midle] + values[midle - 1]) / 2
 
 trip_duration_list = column_to_list(data_list, 2)
 trip_duration_list = sorted([int(x) for x in trip_duration_list])
