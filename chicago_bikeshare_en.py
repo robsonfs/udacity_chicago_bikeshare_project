@@ -103,8 +103,8 @@ def count_gender(data_list):
     Args:
         data: Sequence with all gender values.
     Results:
-        A 2-list in the format [male, female] where male is number o ocurrences
-        of male gender and female is the number of ocurrences of female gender.
+        A 2-list in the format [male, female] where male is number o occurrences
+        of male gender and female is the number of occurrences of female gender.
     """
     male = sum_of_values(1 for k in column_to_list(data_list, -2) if k.lower() == "male")
     female = sum_of_values(1 for k in column_to_list(data_list, -2) if k.lower() == "female")
@@ -174,8 +174,9 @@ def count_user_types(data_list):
     Args:
         data: Sequence with all user_type values.
     Results:
-        A 2-list in the format [customer, subscriber] where customer is number o ocurrences
-        of customer gender and subscriber is the number of ocurrences of subscriber gender.
+        A 3-list in the format [customer, subscriber, dependent] where customer
+        is number o occurrences of customer gender and subscriber is the number
+        of occurrences of subscriber gender.
     """
     customer = get_sum(data_list, -3, 'customer')
     subscriber = get_sum(data_list, -3, 'subscriber')
@@ -277,7 +278,16 @@ print("Will you face it?")
 answer = "yes"
 
 def count_items(column_list):
-    item_types = list(set(k for k in column_list))
+    """Given a list of values, calculate the number of occurrences for each
+    different type of value.
+    Args:
+        - column_list: A list of values
+    Returns:
+        - A tuple in the format (item_types, count_items) where <item_types> is
+        a list of different values in the list provided and <count_items> is the
+        respective numbers of occurrences of each type of value.
+    """
+    item_types = list(set(item for item in column_list))
     count_items = [column_list.count(_type) for _type in item_types]
     return item_types, count_items
 
