@@ -179,10 +179,11 @@ def count_user_types(data_list):
     """
     customer = get_sum(data_list, -3, 'customer')
     subscriber = get_sum(data_list, -3, 'subscriber')
-    return [customer, subscriber]
+    dependent = get_sum(data_list, -3, 'dependent')
+    return [customer, subscriber, dependent]
 
 user_type_list = column_to_list(data_list, -3)
-types = ["Customer", "Subscriber"]
+types = ["Customer", "Subscriber", "Dependent"]
 quantity = count_user_types(data_list)
 y_pos = list(range(len(types)))
 plt.bar(y_pos, quantity)
